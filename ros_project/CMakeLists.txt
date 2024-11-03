@@ -12,6 +12,7 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(joy REQUIRED)
 
 # Include directories
 include_directories(
@@ -22,6 +23,7 @@ include_directories(
 # Add executable
 add_executable(detect_people src/detect_people.cpp)
 ament_target_dependencies(detect_people rclcpp sensor_msgs cv_bridge OpenCV)
+ament_target_dependencies(joystick_control rclcpp joy geometry_msgs)
 
 # Install executable
 install(TARGETS
