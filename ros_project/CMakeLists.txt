@@ -13,6 +13,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(joy REQUIRED)
+find_package(slam_toolbox REQUIRED)
+find_package(nav2_bringup REQUIRED)
 
 # Include directories
 include_directories(
