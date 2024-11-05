@@ -1,6 +1,9 @@
 import launch
 import launch_ros.actions
 from launch import LaunchService
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.actions import IncludeLaunchDescription
+import os
 
 def main():
     ld = launch.LaunchDescription([
@@ -17,6 +20,14 @@ def main():
             name='detect_people',
             output='screen',
             parameters=[{'use_sim_time': False}]
+        ),
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([os.path.join(
+                get_package_share_directory('robotics_brewbuddy'), 'launch', 'slam_toolbox.launch.py')])
+        ),
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([os.path.join(
+                get_package_share_directory('robotics_brewbuddy'), 'launch', 'navigation.launch.py')])
         )
     ])
 
