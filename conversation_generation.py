@@ -1,5 +1,8 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
 
 # Load pre-trained DialoGPT model
 tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
@@ -17,13 +20,12 @@ def generate_response(input_text):
 
     return response_text
 
-def main():
-    while True:
-        input_text = input("You: ")
-        if input_text.lower() in ["exit", "quit"]:
-            break
-        response_text = generate_response(input_text)
-        print(f"Bot: {response_text}")
+@app.route('/generate', methods=['POST'])
+def generate():
+    data = request.get_json()
+    input_text = data.get('input_text', '')
+    response_text = generate_response(input_text)
+    return jsonify({'response_text': response_text})
 
 if __name__ == "__main__":
-    main()
+    app.run(host='0.0.0.0', port=5000)

@@ -75,3 +75,39 @@ To use the speech-to-text functionality, you need to install the following depen
 
 2. The script will prompt you to enter a message, and it will generate a response using the DialoGPT model.
 
+## Setting up the LLM Server
+
+### Setup Flask and Run the Server
+
+1. Install the necessary dependencies:
+   ```bash
+   pip install flask transformers torch
+   ```
+
+2. Run the `conversation_generation.py` script to start the server:
+   ```bash
+   python conversation_generation.py
+   ```
+
+3. The server will be running on `http://0.0.0.0:5000`.
+
+## Using the new ROS2 node `llm_client.py`
+
+### Setup and Run the ROS2 Node
+
+1. Ensure you have the necessary dependencies installed:
+   ```bash
+   pip install requests
+   ```
+
+2. Build the ROS2 package:
+   ```bash
+   colcon build
+   ```
+
+3. Run the `llm_client` node:
+   ```bash
+   ros2 run robotics_brewbuddy llm_client
+   ```
+
+4. The node will subscribe to the `input_text` topic, send the input text to the LLM server, and publish the response to the `response_text` topic.

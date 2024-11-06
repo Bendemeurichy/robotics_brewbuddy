@@ -32,12 +32,15 @@ add_executable(audio_processing src/audio_processing.py)
 ament_target_dependencies(audio_processing rclcpp speech_recognition std_msgs)
 add_executable(sentiment_analysis src/sentiment_analysis.py)
 ament_target_dependencies(sentiment_analysis rclcpp textblob std_msgs)
+add_executable(llm_client src/llm_client.py)
+ament_target_dependencies(llm_client rclcpp requests std_msgs)
 
 # Install executable
 install(TARGETS
   detect_people
   audio_processing
   sentiment_analysis
+  llm_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
