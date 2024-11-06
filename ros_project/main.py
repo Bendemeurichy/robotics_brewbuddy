@@ -27,7 +27,7 @@ def main():
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([os.path.join(
-                get_package_share_directory('robotics_brewbuddy'), 'launch', 'navigation.launch.py')])
+                get_package_share_directory('robotics_brewbuddy'), 'launch', 'navigation_with_people_detection.launch.py')])
         )
     ])
 
