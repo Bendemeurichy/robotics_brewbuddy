@@ -1,1 +1,4 @@
 requests
+speech_recognition
+transformers
+torch
