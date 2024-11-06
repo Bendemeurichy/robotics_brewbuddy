@@ -25,3 +25,21 @@ repo for robotics project that serves coffee to people in need of caffeination u
    ```
 
 3. The script will output the coordinates of detected people in the image.
+
+## Conversation Generation using DialoGPT
+
+### Setup DialoGPT
+
+1. Install the necessary dependencies:
+   ```bash
+   pip install transformers torch
+   ```
+
+### Using the `conversation_generation.py` script
+
+1. Run the `conversation_generation.py` script:
+   ```bash
+   python conversation_generation.py
+   ```
+
+2. The script will prompt you to enter a message, and it will generate a response using the DialoGPT model.
