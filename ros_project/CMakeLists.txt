@@ -15,6 +15,8 @@ find_package(OpenCV REQUIRED)
 find_package(joy REQUIRED)
 find_package(slam_toolbox REQUIRED)
 find_package(nav2_bringup REQUIRED)
+find_package(speech_recognition REQUIRED)
+find_package(textblob REQUIRED)
 
 # Include directories
 include_directories(
@@ -26,10 +28,16 @@ include_directories(
 add_executable(detect_people src/detect_people.cpp)
 ament_target_dependencies(detect_people rclcpp sensor_msgs cv_bridge OpenCV)
 ament_target_dependencies(joystick_control rclcpp joy geometry_msgs)
+add_executable(audio_processing src/audio_processing.py)
+ament_target_dependencies(audio_processing rclcpp speech_recognition std_msgs)
+add_executable(sentiment_analysis src/sentiment_analysis.py)
+ament_target_dependencies(sentiment_analysis rclcpp textblob std_msgs)
 
 # Install executable
 install(TARGETS
   detect_people
+  audio_processing
+  sentiment_analysis
   DESTINATION lib/${PROJECT_NAME}
 )
 
